@@ -1,3 +1,3 @@
-let c = new Cliente(1, 'Mota');
+let nome = "Mota";
 
-console.log(c.Id, c.Nome);
+console.log(nome);
