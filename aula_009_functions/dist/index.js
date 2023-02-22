@@ -1,5 +1,6 @@
 "use strict";
-function exibirMensagem() {
-    console.log('Olá, seja bem-vindo.');
+function exibirMensagem(mensagem, nome) {
+    console.log(mensagem, nome);
 }
-exibirMensagem(); // invoca a função
+//parametro ou argumento
+exibirMensagem('Olá', 'Lindoval!'); // invoca a função

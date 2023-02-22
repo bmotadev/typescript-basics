@@ -1,5 +1,5 @@
-function exibirMensagem() { //usar camelCase para nome de função
-    console.log('Olá, seja bem-vindo.');
+function exibirMensagem(mensagem: string, nome: string) { //usar camelCase para nome de função
+    console.log(mensagem, nome);
 }
-
-exibirMensagem(); // invoca a função
+//parametro ou argumento
+exibirMensagem('Olá', 'Lindoval!'); // invoca a função
