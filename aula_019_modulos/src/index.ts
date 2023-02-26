@@ -1,55 +1,58 @@
-// generics: permite que uma classe ou interface manipulem um determinado tipo de dados. Porém esse tipo de dados só é definido no momento em que instanciamos a classe ou interface.
-abstract class OpcaoMenu {
-    imprimir() {
-        console.log(this);
-    }
-}
+// modulo: uma forma de dividir o codigo em porções que façam sentido contextualmente.
+import { TipoPersonagem } from "./enums/tipo_personagem";
 
 
-class Personagem extends OpcaoMenu {
+// uma classe abstrata contem caracteristicas e comportamentos que devem ser herdados por outras classes. Mas ela por si só, não pode ser instanciada.
+abstract class Personagem {
     nome: string;
-    constructor(nome: string) {
-        super();// apos fazer a herança passar o metodo super
+    tipo: TipoPersonagem;
+
+    constructor(nome: string, tipo: TipoPersonagem) {
         this.nome = nome;
+        this.tipo = tipo;
+
     }
-    
-    imprimir(): void {
-        console.log(`${this.nome}`);
+
+    caminhar() {
+        console.log(`${this.nome} caminhou`);
+    }
+
+    abstract atacar() : void; // metodo abstrato precisa definir o tipo, no caso o void
+}
+
+class Mago extends Personagem {
+    constructor(nome: string) {
+        super(nome, TipoPersonagem.Mago);  //super chama o constructor da classe pai
+    }
+
+    caminhar() { // metodo/função
+        console.log(`${this.nome} voou.`);
+    }
+
+    atacar(): void {
+        console.log(`${this.nome} atacou com magia.`);
     }
 }
 
-class Armamento {
+class Elfo extends Personagem {
+    constructor(nome: string) {
+        super(nome, TipoPersonagem.Elfo);  //chama o constructor da classe pai
+    }
 
-}
-
-class Mapa {
-    clima: string;
-    constructor(clima: string) {
-        this.clima = clima;
+    atacar(): void {
+        console.log(`${this.nome} atacou com arco e flecha.`);
     }
 }
 
-class Menu<T extends OpcaoMenu> { //<T> define como tipo generico e herda imprimir do opcaomenu
-    private opcoes: T[] = [];
+let p1 = new Mago('Saruman');
+let p2 = new Elfo('Elrond');
 
-    adicionarOpcao(opcao: T) {
-        this.opcoes.push(opcao);
-    }
 
-    imprimirOpcoes() {
-        this.opcoes.forEach(opcao => opcao.imprimir());
-    }
+console.log(p1);
+console.log(p2);
 
-}
+p1.caminhar();
+p2.caminhar();
 
-let p1 = new Personagem('Saruman');
-let p2 = new Personagem('Elrond');
-let m1 = new Mapa('Deserto');
-let m2 = new Mapa('Floresta');
-
-let menu = new Menu<Personagem>(); // passando o tipo personagem. Tendo um menu generico
-
-menu.adicionarOpcao(p1);
-menu.adicionarOpcao(p2);
-
-menu.imprimirOpcoes();
+p1.atacar();
+p2.atacar();
