@@ -1,6 +1,12 @@
-class Elfo extends Personagem {
+import { TipoPersonagem as Tipo } from "../enums/tipo_personagem";
+import { Personagem, VIDA_MAX } from "./personagem";
+
+export class Elfo extends Personagem {
+    vida: number;
+
     constructor(nome: string) {
-        super(nome, TipoPersonagem.Elfo);  //chama o constructor da classe pai
+        super(nome, Tipo.Elfo);  //chama o constructor da classe pai
+        this.vida = VIDA_MAX;
     }
 
     atacar(): void {

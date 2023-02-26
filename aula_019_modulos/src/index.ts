@@ -1,15 +1,6 @@
-// modulo: uma forma de dividir o codigo em porções que façam sentido contextualmente.
-import { TipoPersonagem } from "./enums/tipo_personagem";
+// modulo(importação/exportação): uma forma de dividir o codigo em porções que façam sentido contextualmente.
+import { Elfo } from "./personagens/elfo";
 import { Mago } from "./personagens/mago";
-import { Personagem } from "./personagens/personagem";
-
-
-
-// uma classe abstrata contem caracteristicas e comportamentos que devem ser herdados por outras classes. Mas ela por si só, não pode ser instanciada.
-
-
-
-
 
 
 let p1 = new Mago('Saruman');

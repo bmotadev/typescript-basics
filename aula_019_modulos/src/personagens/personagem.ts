@@ -1,6 +1,6 @@
 import { TipoPersonagem } from "../enums/tipo_personagem";
 
-export abstract class Personagem {
+abstract class Personagem {
     nome: string;
     tipo: TipoPersonagem;
 
@@ -16,3 +16,5 @@ export abstract class Personagem {
 
     abstract atacar() : void; // metodo abstrato precisa definir o tipo, no caso o void
 }
+const VIDA_MAXIMA = 100;
+export { Personagem, VIDA_MAXIMA as VIDA_MAX}
